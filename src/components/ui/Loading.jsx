@@ -1,123 +1,51 @@
-import { motion } from "framer-motion";
+import React from "react";
 
-const Loading = () => {
-  return (
-    <div className="space-y-6 p-6">
-      {/* Header skeleton */}
-      <div className="space-y-3">
-        <motion.div
-          className="h-8 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded-lg w-3/4"
-          animate={{ x: [-100, 100, -100] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          style={{
-            background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-            backgroundSize: "200% 100%"
-          }}
-        />
-        <motion.div
-          className="h-4 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded w-1/2"
-          animate={{ x: [-100, 100, -100] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.2 }}
-          style={{
-            background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-            backgroundSize: "200% 100%"
-          }}
-        />
-      </div>
-
-      {/* Control panel skeleton */}
-      <div className="glass-effect rounded-xl p-6 space-y-4">
-        <motion.div
-          className="h-6 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded w-1/4"
-          animate={{ x: [-100, 100, -100] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.3 }}
-          style={{
-            background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-            backgroundSize: "200% 100%"
-          }}
-        />
-        <motion.div
-          className="h-12 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded-lg"
-          animate={{ x: [-100, 100, -100] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.4 }}
-          style={{
-            background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-            backgroundSize: "200% 100%"
-          }}
-        />
-        <div className="flex gap-4">
-          <motion.div
-            className="h-8 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded flex-1"
-            animate={{ x: [-100, 100, -100] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.5 }}
-            style={{
-              background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-              backgroundSize: "200% 100%"
-            }}
-          />
-          <motion.div
-            className="h-8 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded w-24"
-            animate={{ x: [-100, 100, -100] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.6 }}
-            style={{
-              background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-              backgroundSize: "200% 100%"
-            }}
-          />
+const Loading = ({ type = "default" }) => {
+  if (type === "projects") {
+    return (
+      <div className="space-y-6">
+        <div className="animate-shimmer h-8 w-48 rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
+              <div className="animate-shimmer h-6 w-3/4 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+              <div className="space-y-2">
+                <div className="animate-shimmer h-4 w-full rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+                <div className="animate-shimmer h-4 w-2/3 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+              </div>
+              <div className="animate-shimmer h-5 w-20 rounded-full bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+            </div>
+          ))}
         </div>
       </div>
+    );
+  }
 
-      {/* Font grid skeleton */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[...Array(6)].map((_, index) => (
-          <motion.div
-            key={index}
-            className="glass-effect rounded-xl p-6 space-y-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <motion.div
-              className="h-6 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded w-3/4"
-              animate={{ x: [-100, 100, -100] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.7 + index * 0.1 }}
-              style={{
-                background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-                backgroundSize: "200% 100%"
-              }}
-            />
-            <motion.div
-              className="h-16 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded"
-              animate={{ x: [-100, 100, -100] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.8 + index * 0.1 }}
-              style={{
-                background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-                backgroundSize: "200% 100%"
-              }}
-            />
-            <div className="flex gap-2">
-              <motion.div
-                className="h-8 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded flex-1"
-                animate={{ x: [-100, 100, -100] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.9 + index * 0.1 }}
-                style={{
-                  background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-                  backgroundSize: "200% 100%"
-                }}
-              />
-              <motion.div
-                className="h-8 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded w-16"
-                animate={{ x: [-100, 100, -100] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 1 + index * 0.1 }}
-                style={{
-                  background: "linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%)",
-                  backgroundSize: "200% 100%"
-                }}
-              />
+  if (type === "dashboard") {
+    return (
+      <div className="space-y-8">
+        <div className="space-y-2">
+          <div className="animate-shimmer h-10 w-64 rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+          <div className="animate-shimmer h-6 w-96 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
+              <div className="animate-shimmer h-12 w-12 rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+              <div className="space-y-2">
+                <div className="animate-shimmer h-8 w-16 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+                <div className="animate-shimmer h-4 w-24 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200"></div>
+              </div>
             </div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center justify-center py-12">
+      <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary-500 border-t-transparent"></div>
     </div>
   );
 };
